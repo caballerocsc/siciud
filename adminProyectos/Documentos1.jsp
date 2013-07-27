@@ -52,6 +52,9 @@
 		if(document.frmCargaDoc.tipo.value=="5"){
 			document.frmCargaDoc.accion.value="5";
 		}
+		if(document.frmCargaDoc.tipo.value=="6"){
+			document.frmCargaDoc.accion.value="6";
+		}
 		if(document.frmCargaDoc.fechaDoc.value=="")
 			msg=msg+"-) Fecha del Documento\n";		
 		if(document.frmCargaDoc.archivo.value=="")
@@ -199,6 +202,7 @@
 							<td>
 								<select name="tipo" style="width:120px;" onchange="cambioTipo(this)" >
 									<option value="0">----------------</option>
+									<option value="6">Acta de Inicio</option>
 									<option value="1">Otro Documento</option>
 									<option value="2">Informe Final</option>
 									<option value="3">Informe Parcial</option>

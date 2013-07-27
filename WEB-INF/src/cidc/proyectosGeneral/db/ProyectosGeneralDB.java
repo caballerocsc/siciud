@@ -59,7 +59,7 @@ public class ProyectosGeneralDB extends BaseDB {
 		super(c, perfil);
 		rb=ResourceBundle.getBundle("cidc.proyectosGeneral.consultas");
 	}
-
+	
 	public List<Proyecto> getListaProyectos(FiltroGeneralProyecto filtro){
 		List<Proyecto> lista=new ArrayList<Proyecto>();
 		Connection cn=null;
@@ -554,7 +554,8 @@ public class ProyectosGeneralDB extends BaseDB {
 					documento.setNombreDocumento("Informe Parcial");
 				if(documento.getTipo()==2)
 					documento.setNombreDocumento("Informe Final");
-				
+				if(documento.getTipo()==6)
+					documento.setNombreDocumento("Acta de Inicio");
 				ps=cn.prepareStatement(rb.getString("nuevaCargaDocProyecto"+proyecto.getClaseProyecto()));
 				ps.setLong(i++, proyecto.getId());			
 				ps.setString(i++, documento.getNombreDocumento());
@@ -1430,6 +1431,33 @@ public class ProyectosGeneralDB extends BaseDB {
 		}
 		
 		return listaCompromisos;
+	}
+	
+	/**
+	 * este metodo verifica si el acta de inicio existe como un documento anexo
+	 * @param idproy identificador del proyecto
+	 * @return retorna booleano verdadero si encuentra un acata de inicio, de lo contrario false 
+	 */
+	public String getActaInicio(int idproy){
+		Connection cn = null;
+		PreparedStatement ps=null;
+		ResultSet rs =null;
+		try{
+			cn=cursor.getConnection(super.perfil);
+			ps=cn.prepareStatement(rb.getString("getActaInicio"));
+			ps.setInt(1, idproy);
+			ps.setInt(2, 6);//seis es el tipo de documento para el acta de inicio
+			rs=ps.executeQuery();
+			while (rs.next()) {
+				return "1";
+			}
+		}catch (SQLException e) {
+			lanzaExcepcion(e);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "0";
 	}
 }
 

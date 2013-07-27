@@ -78,6 +78,7 @@
 	</table>
 
 	<form name="balance" action='<c:url value="/GestionGeneralProyectos/AdminGeneralProyectos.x"/>' method="post">
+	<c:if test="${requestScope.Acta==1}">
 		<input type="hidden" name="accion" value="0">
 		<input type="hidden" name="idRub" value="0">
 		<input type="hidden" name="idProyecto" value='<c:out value="${sessionScope.proyecto.id}"/>'/>
@@ -107,6 +108,10 @@
 				<th>&nbsp;</th>
 			</tr>
 		</table>
+		</c:if>
+		<c:if test="${requestScope.Acta==0}">
+			<H1>NO HAY ACTA DE INICIO</H1>
+		</c:if>
 	</form>
 	<table align="center" width="100%">
 		<tr>

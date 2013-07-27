@@ -95,6 +95,7 @@ public class AdminGeneralProyectos extends ServletGeneral {
 			case ParametrosOBJ.cmdBalanceGral:
 				sesion.removeAttribute("balanceProyecto");
 				sesion.setAttribute("balanceProyecto",proyectosGeneralDB.getBalanceProyecto(proyecto));
+				req.setAttribute("Acta", proyectosGeneralDB.getActaInicio(proyecto.getId()));
 				irA="/adminProyectos/BalanceGeneral.jsp";
 			break;			
 			case ParametrosOBJ.cmdListaGastosRubro:
