@@ -53,7 +53,7 @@
 			document.frmCargaDoc.accion.value="5";
 		}
 		if(document.frmCargaDoc.tipo.value=="6"){
-			document.frmCargaDoc.accion.value="6";
+			document.frmCargaDoc.accion.value="3";
 		}
 		if(document.frmCargaDoc.fechaDoc.value=="")
 			msg=msg+"-) Fecha del Documento\n";		
